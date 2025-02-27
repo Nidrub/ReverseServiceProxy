@@ -1,6 +1,6 @@
 package com.example.service_proxy.controller;
 
-import com.example.service_proxy.response.WeatherTemperatureResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +10,7 @@ import com.example.service_proxy.response.WeatherLocationResponse;
 import com.example.service_proxy.service.WeatherService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/weather")
@@ -23,7 +24,7 @@ public class WeatherController {
     }
 
     @GetMapping("/getWeather")
-    public WeatherTemperatureResponse getWeather(@RequestParam Double lon, @RequestParam Double lat , @RequestParam boolean celsius) {
+    public Map<String, Object> getWeather(@RequestParam Double lon, @RequestParam Double lat , @RequestParam boolean celsius) {
         return weatherLocationService.getWeather(lon, lat, celsius);
     }
 }

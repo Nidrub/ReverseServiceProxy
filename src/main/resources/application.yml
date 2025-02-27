@@ -1,0 +1,11 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: service_proxy
+
+openweather:
+  apiKey: "3f60915f4b6d7816508a9f95344d080a"
+  urlGetLocation: "https://api.openweathermap.org/geo/1.0/direct?q="
+  urlTemperature: "https://api.openweathermap.org/data/2.5/weather"
