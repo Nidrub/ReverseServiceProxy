@@ -18,7 +18,7 @@ public class WeatherLocationService {
     private String locationUrl;
 
     public List<WeatherLocationResponse> getLocations(String location) {
-        String url = "https://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=5&appid=" + apiKey;
+        String url = locationUrl + location + "&limit=5&appid=" + apiKey;
         //make the API call
         WeatherLocationResponse[] locations = restTemplate.getForObject(url, WeatherLocationResponse[].class);
         return List.of(locations);
