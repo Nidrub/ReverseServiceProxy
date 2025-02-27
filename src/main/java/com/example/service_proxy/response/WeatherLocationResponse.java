@@ -7,6 +7,16 @@ public class WeatherLocationResponse {
     private double lon;
     private String country;
     private String state;
+    public WeatherLocationResponse(){
+
+    }
+    public WeatherLocationResponse(String name, double lat, double lon, String country, String state) {
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon;
+        this.country = country;
+        this.state = state;
+    }
 
     public String getName() {
         return name;

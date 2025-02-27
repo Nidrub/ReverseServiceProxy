@@ -1,5 +1,6 @@
 package com.example.service_proxy.controller;
 
+import com.example.service_proxy.response.WeatherTemperatureResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,13 @@ public class WeatherController {
     @Autowired
     private WeatherLocationService weatherLocationService;
 
-    @GetMapping("/locations")
+    @GetMapping("/getLanLon")
     public List<WeatherLocationResponse> getLocations(@RequestParam String location) {
         return weatherLocationService.getLocations(location);
+    }
+
+    @GetMapping("/getWeather")
+    public WeatherTemperatureResponse getWeather(@RequestParam Double lon, @RequestParam Double lat) {
+        return weatherLocationService.getWeather(lon, lat);
     }
 }
