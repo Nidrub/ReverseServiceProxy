@@ -9,7 +9,7 @@ import com.example.service_proxy.response.WeatherLocationResponse;
 import java.util.List;
 
 @Service
-public class WeatherLocationService {
+public class WeatherService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Value("${openweather.api.key}")
@@ -30,9 +30,16 @@ public class WeatherLocationService {
     }
 
 
-    public WeatherTemperatureResponse getWeather(double lon, double lat) {
+    public WeatherTemperatureResponse getWeather(double lon, double lat, boolean temp) {
+        //farenheit
+        String units = "imperial";
+        //if true then celsius
+        if (temp){
+            units = "metric";
+        }
+
         String url = weatherUrl + "?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
-                + "&units=imperial";
+                + "&units=" + units;
         WeatherTemperatureResponse weather = restTemplate.getForObject(url, WeatherTemperatureResponse.class);
         return weather;
     }

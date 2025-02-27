@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.service_proxy.response.WeatherLocationResponse;
-import com.example.service_proxy.service.WeatherLocationService;
+import com.example.service_proxy.service.WeatherService;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/weather")
 public class WeatherController {
     @Autowired
-    private WeatherLocationService weatherLocationService;
+    private WeatherService weatherLocationService;
 
     @GetMapping("/getLanLon")
     public List<WeatherLocationResponse> getLocations(@RequestParam String location) {
@@ -23,7 +23,7 @@ public class WeatherController {
     }
 
     @GetMapping("/getWeather")
-    public WeatherTemperatureResponse getWeather(@RequestParam Double lon, @RequestParam Double lat) {
-        return weatherLocationService.getWeather(lon, lat);
+    public WeatherTemperatureResponse getWeather(@RequestParam Double lon, @RequestParam Double lat , @RequestParam boolean celsius) {
+        return weatherLocationService.getWeather(lon, lat, celsius);
     }
 }
