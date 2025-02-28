@@ -24,7 +24,7 @@ public class WeatherController {
     }
 
     @GetMapping("/getWeather")
-    public Map<String, Object> getWeather(@RequestParam Double lon, @RequestParam Double lat , @RequestParam boolean celsius) {
+    public Map<String, Object> getWeather(@RequestParam double lon, @RequestParam double lat , @RequestParam boolean celsius) {
         return weatherLocationService.getWeather(lon, lat, celsius);
     }
 }
